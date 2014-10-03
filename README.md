@@ -24,39 +24,47 @@ Or install it yourself as:
 
 ## Example
 
-   module Personage
+```ruby
+module Personage
 
-     extend ContextBuilder
+  extend ContextBuilder
 
-     context_attr :name, :age
-     context_attr(:race) { |options| options[:race] || options[:ethnicity] }
+  context_attr :name, :age
+  context_attr(:race) { |options| options[:race] || options[:ethnicity] }
 
-     def lookup_age
-       ENV['AGE']
-     end
+  def lookup_age
+    ENV['AGE']
+  end
 
-   end
+end
+```
 
-   class User
+```ruby
+class User
 
-     include Personage
+  include Personage
 
-     def initialize(name)
-       initialize_context(:name => name, :ethnicity => 'unknown')
-     end
+  def initialize(name)
+    initialize_context(:name => name, :ethnicity => 'unknown')
+  end
 
-     def lookup_age
-       'N/A' unless name == 'Greg'
-     end
+  def lookup_age
+    'N/A' unless name == 'Greg'
+  end
 
-   end
+end
+```
 
-   User.new('Fred').inspect
-   ### "#<User name=Fred age=N/A race=unknown>"
+```ruby
+User.new('Fred').inspect
+>> "#<User name=Fred age=N/A race=unknown>"
+```
 
-   ENV['AGE'] = '27'
-   User.new('Greg').inspect
-   ### "#<User name=Greg age=27 race=unknown>"
+```ruby
+ENV['AGE'] = '27'
+User.new('Greg').inspect
+>> "#<User name=Greg age=27 race=unknown>"
+```
 
 ## Usage Notes
 
