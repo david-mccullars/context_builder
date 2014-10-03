@@ -52,11 +52,11 @@ Or install it yourself as:
    end
 
    User.new('Fred').inspect
-   >> #<User name=Fred age=N/A race=unknown>
+   ### "#<User name=Fred age=N/A race=unknown>"
 
    ENV['AGE'] = '27'
    User.new('Greg').inspect
-   >> #<User name=Greg age=27 race=unknown>
+   ### "#<User name=Greg age=27 race=unknown>"
 
 ## Usage Notes
 
